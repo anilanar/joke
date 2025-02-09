@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-internal.3](https://github.com/userlike/joke/compare/v3.0.0-internal.2...v3.0.0-internal.3) (2025-02-09)
+
+**Note:** Version bump only for package joke-example
+
+
+
+
+
 # [3.0.0-internal.2](https://github.com/userlike/joke/compare/v3.0.0-internal.1...v3.0.0-internal.2) (2025-02-09)
 
 **Note:** Version bump only for package joke-example
