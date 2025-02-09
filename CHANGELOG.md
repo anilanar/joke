@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-internal.2](https://github.com/userlike/joke/compare/v3.0.0-internal.1...v3.0.0-internal.2) (2025-02-09)
+
+
+### Bug Fixes
+
+* **babel-plugin-joke:** hardcode jest globals import to import { jest } from '@jest/globals' ([98a3c3d](https://github.com/userlike/joke/commit/98a3c3d00cfcbe8260c9f1c98e95e32c70289888))
+
+
+
+
+
 # [3.0.0-internal.1](https://github.com/userlike/joke/compare/v3.0.0-internal.0...v3.0.0-internal.1) (2025-02-09)
 
 
