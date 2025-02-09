@@ -258,7 +258,12 @@ function addJestImport(
     },
   });
   if (existingImport === undefined) {
-    return addNamed(path, JEST, "@jest/globals");
+    const jestImport = t.importDeclaration(
+      [t.importSpecifier(t.identifier(JEST), t.identifier(JEST))],
+      t.stringLiteral("@jest/globals")
+    );
+    path.unshiftContainer("body", jestImport);
+    return t.identifier(JEST);
   } else {
     return t.clone(existingImport);
   }
