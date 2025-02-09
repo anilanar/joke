@@ -18,52 +18,52 @@ it("common case", async () => {
   `);
 
   expect(esm).toMatchInlineSnapshot(`
-    "import * as _bar from "bar";
-    import * as _foo from "foo";
-    import { jest as _jest } from "@jest/globals";
-    import { mock } from '@userlike/joke';
-    _jest.mock("bar");
-    _jest.mock("foo");
-    const {
-      foo,
-      foo2
-    } = _foo;
-    const {
-      bar,
-      bar2
-    } = _bar;
-    foo.mockReturnValue(5);
-    foo2.mockReturnValue(5);
-    bar.mockReturnValue(5);
-    bar2.mockReturnValue(5);
-    [foo, foo2, bar, bar2].forEach(console.log);"
-  `);
+"import * as _bar from "bar";
+import * as _foo from "foo";
+import { jest as _jest } from "@jest/globals";
+import { mock } from '@userlike/joke';
+_jest.mock("bar");
+_jest.mock("foo");
+const {
+  foo,
+  foo2
+} = _foo;
+const {
+  bar,
+  bar2
+} = _bar;
+foo.mockReturnValue(5);
+foo2.mockReturnValue(5);
+bar.mockReturnValue(5);
+bar2.mockReturnValue(5);
+[foo, foo2, bar, bar2].forEach(console.log);"
+`);
 
   expect(cjs).toMatchInlineSnapshot(`
-    ""use strict";
+""use strict";
 
-    var _bar = _interopRequireWildcard(require("bar"));
-    var _foo = _interopRequireWildcard(require("foo"));
-    var _globals = require("@jest/globals");
-    var _joke = require("@userlike/joke");
-    function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-    function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-    _globals.jest.mock("bar");
-    _globals.jest.mock("foo");
-    const {
-      foo,
-      foo2
-    } = _foo;
-    const {
-      bar,
-      bar2
-    } = _bar;
-    foo.mockReturnValue(5);
-    foo2.mockReturnValue(5);
-    bar.mockReturnValue(5);
-    bar2.mockReturnValue(5);
-    [foo, foo2, bar, bar2].forEach(console.log);"
-  `);
+var _bar = _interopRequireWildcard(require("bar"));
+var _foo = _interopRequireWildcard(require("foo"));
+var _globals = require("@jest/globals");
+var _joke = require("@userlike/joke");
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+_globals.jest.mock("bar");
+_globals.jest.mock("foo");
+const {
+  foo,
+  foo2
+} = _foo;
+const {
+  bar,
+  bar2
+} = _bar;
+foo.mockReturnValue(5);
+foo2.mockReturnValue(5);
+bar.mockReturnValue(5);
+bar2.mockReturnValue(5);
+[foo, foo2, bar, bar2].forEach(console.log);"
+`);
 });
 
 it("handles mock import as a namespace", async () => {
@@ -83,18 +83,18 @@ it("handles mock import as a namespace", async () => {
   `);
 
   expect(cjs).toMatchInlineSnapshot(`
-    ""use strict";
+""use strict";
 
-    var _foobar = _interopRequireWildcard(require("foobar"));
-    var _globals = require("@jest/globals");
-    var M = _interopRequireWildcard(require("@userlike/joke"));
-    function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-    function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-    _globals.jest.mock("foobar");
-    const {
-      foo
-    } = _foobar;"
-  `);
+var _foobar = _interopRequireWildcard(require("foobar"));
+var _globals = require("@jest/globals");
+var M = _interopRequireWildcard(require("@userlike/joke"));
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+_globals.jest.mock("foobar");
+const {
+  foo
+} = _foobar;"
+`);
 });
 
 it("handles assigning return value to a namespace variable", async () => {
@@ -114,17 +114,17 @@ it("handles assigning return value to a namespace variable", async () => {
   `);
 
   expect(cjs).toMatchInlineSnapshot(`
-    ""use strict";
+""use strict";
 
-    var _foobar = _interopRequireWildcard(require("foobar"));
-    var _globals = require("@jest/globals");
-    var _joke = require("@userlike/joke");
-    function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-    function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-    _globals.jest.mock("foobar");
-    const F = _foobar;
-    F.foo.mockReturnValue(5);"
-  `);
+var _foobar = _interopRequireWildcard(require("foobar"));
+var _globals = require("@jest/globals");
+var _joke = require("@userlike/joke");
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+_globals.jest.mock("foobar");
+const F = _foobar;
+F.foo.mockReturnValue(5);"
+`);
 });
 
 it("handles member expressions", async () => {
@@ -144,17 +144,17 @@ it("handles member expressions", async () => {
   `);
 
   expect(cjs).toMatchInlineSnapshot(`
-    ""use strict";
+""use strict";
 
-    var _foobar = _interopRequireWildcard(require("foobar"));
-    var _globals = require("@jest/globals");
-    var _joke = require("@userlike/joke");
-    function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-    function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-    _globals.jest.mock("foobar");
-    const bar = _foobar.foo.bar;
-    bar.mockReturnValue(5);"
-  `);
+var _foobar = _interopRequireWildcard(require("foobar"));
+var _globals = require("@jest/globals");
+var _joke = require("@userlike/joke");
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+_globals.jest.mock("foobar");
+const bar = _foobar.foo.bar;
+bar.mockReturnValue(5);"
+`);
 });
 
 it("handles just a call expression", async () => {
@@ -172,16 +172,16 @@ it("handles just a call expression", async () => {
   `);
 
   expect(cjs).toMatchInlineSnapshot(`
-    ""use strict";
+""use strict";
 
-    var _foobar = _interopRequireWildcard(require("foobar"));
-    var _globals = require("@jest/globals");
-    var _joke = require("@userlike/joke");
-    function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-    function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-    _globals.jest.mock("foobar");
-    _foobar;"
-  `);
+var _foobar = _interopRequireWildcard(require("foobar"));
+var _globals = require("@jest/globals");
+var _joke = require("@userlike/joke");
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+_globals.jest.mock("foobar");
+_foobar;"
+`);
 });
 
 it("throws error if mock is called inside closures", async () => {
@@ -214,19 +214,19 @@ it("works with rest params", async () => {
   `);
 
   expect(cjs).toMatchInlineSnapshot(`
-    ""use strict";
+""use strict";
 
-    var _foobar = _interopRequireWildcard(require("foobar"));
-    var _globals = require("@jest/globals");
-    var _joke = require("@userlike/joke");
-    function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-    function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-    _globals.jest.mock("foobar");
-    const {
-      foo,
-      ...bar
-    } = _foobar;"
-  `);
+var _foobar = _interopRequireWildcard(require("foobar"));
+var _globals = require("@jest/globals");
+var _joke = require("@userlike/joke");
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+_globals.jest.mock("foobar");
+const {
+  foo,
+  ...bar
+} = _foobar;"
+`);
 });
 
 it("allows custom module implementation to be passed", async () => {
@@ -238,32 +238,32 @@ it("allows custom module implementation to be passed", async () => {
     `);
 
   expect(esm).toMatchInlineSnapshot(`
-    "import * as _foobar from "foobar";
-    import { jest as _jest } from "@jest/globals";
-    import { mock } from '@userlike/joke';
-    _jest.mock("foobar", () => global.Object.assign({}, _jest.genMockFromModule("foobar"), (() => ({
-      foo: 5
-    }))()));
-    const {
-      foo
-    } = _foobar;"
-  `);
+"import * as _foobar from "foobar";
+import { jest as _jest } from "@jest/globals";
+import { mock } from '@userlike/joke';
+_jest.mock("foobar", () => global.Object.assign({}, _jest.genMockFromModule("foobar"), (() => ({
+  foo: 5
+}))()));
+const {
+  foo
+} = _foobar;"
+`);
 
   expect(cjs).toMatchInlineSnapshot(`
-    ""use strict";
+""use strict";
 
-    var _foobar = _interopRequireWildcard(require("foobar"));
-    var _globals = require("@jest/globals");
-    var _joke = require("@userlike/joke");
-    function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-    function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-    _globals.jest.mock("foobar", () => global.Object.assign({}, _globals.jest.genMockFromModule("foobar"), (() => ({
-      foo: 5
-    }))()));
-    const {
-      foo
-    } = _foobar;"
-  `);
+var _foobar = _interopRequireWildcard(require("foobar"));
+var _globals = require("@jest/globals");
+var _joke = require("@userlike/joke");
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+_globals.jest.mock("foobar", () => global.Object.assign({}, _globals.jest.genMockFromModule("foobar"), (() => ({
+  foo: 5
+}))()));
+const {
+  foo
+} = _foobar;"
+`);
 });
 
 it("throws a sensible error on invalid usage", async () => {
@@ -297,32 +297,32 @@ describe("mockSome", () => {
     `);
 
     expect(esm).toMatchInlineSnapshot(`
-      "import * as _foo from "foo";
-      import { jest } from '@jest/globals';
-      import { mockSome } from '@userlike/joke';
-      jest.mock("foo", () => global.Object.assign({}, jest.requireActual("foo"), (() => ({
-        bar: jest.fn()
-      }))()));
-      const {
-        bar
-      } = _foo;"
-    `);
+"import * as _foo from "foo";
+import { jest } from '@jest/globals';
+import { mockSome } from '@userlike/joke';
+jest.mock("foo", () => global.Object.assign({}, jest.requireActual("foo"), (() => ({
+  bar: jest.fn()
+}))()));
+const {
+  bar
+} = _foo;"
+`);
 
     expect(cjs).toMatchInlineSnapshot(`
-      ""use strict";
+""use strict";
 
-      var _foo = _interopRequireWildcard(require("foo"));
-      var _globals = require("@jest/globals");
-      var _joke = require("@userlike/joke");
-      function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-      function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-      _globals.jest.mock("foo", () => global.Object.assign({}, jest.requireActual("foo"), (() => ({
-        bar: _globals.jest.fn()
-      }))()));
-      const {
-        bar
-      } = _foo;"
-    `);
+var _foo = _interopRequireWildcard(require("foo"));
+var _globals = require("@jest/globals");
+var _joke = require("@userlike/joke");
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+_globals.jest.mock("foo", () => global.Object.assign({}, _globals.jest.requireActual("foo"), (() => ({
+  bar: _globals.jest.fn()
+}))()));
+const {
+  bar
+} = _foo;"
+`);
   });
 });
 
@@ -337,32 +337,32 @@ describe("mockAll", () => {
     `);
 
     expect(esm).toMatchInlineSnapshot(`
-      "import * as _foo from "foo";
-      import { jest } from '@jest/globals';
-      import { mockAll } from '@userlike/joke';
-      jest.mock("foo", () => ({
-        bar: jest.fn()
-      }));
-      const {
-        bar
-      } = _foo;"
-    `);
+"import * as _foo from "foo";
+import { jest } from '@jest/globals';
+import { mockAll } from '@userlike/joke';
+jest.mock("foo", () => ({
+  bar: jest.fn()
+}));
+const {
+  bar
+} = _foo;"
+`);
 
     expect(cjs).toMatchInlineSnapshot(`
-      ""use strict";
+""use strict";
 
-      var _foo = _interopRequireWildcard(require("foo"));
-      var _globals = require("@jest/globals");
-      var _joke = require("@userlike/joke");
-      function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-      function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-      _globals.jest.mock("foo", () => ({
-        bar: _globals.jest.fn()
-      }));
-      const {
-        bar
-      } = _foo;"
-    `);
+var _foo = _interopRequireWildcard(require("foo"));
+var _globals = require("@jest/globals");
+var _joke = require("@userlike/joke");
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+_globals.jest.mock("foo", () => ({
+  bar: _globals.jest.fn()
+}));
+const {
+  bar
+} = _foo;"
+`);
   });
 });
 

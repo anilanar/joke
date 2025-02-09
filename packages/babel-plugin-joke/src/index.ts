@@ -136,7 +136,7 @@ function convertMockCalls(
     invariantPath(t.isStringLiteral(moduleNameLiteral), callPath);
     const moduleName = moduleNameLiteral.value;
 
-    const jestImport = addJestImport(path);
+    const jestImport = addJestImport(t, path);
     const namespaceName = addNamespace(path, moduleName);
     callPath.replaceWith(t.identifier(namespaceName.name));
 
@@ -191,7 +191,7 @@ function mockImplementation(
     return impl;
   }
 
-  const jestImport = addJestImport(path);
+  const jestImport = addJestImport(t, path);
   const iife = t.callExpression(impl, []);
   const requireMock = t.callExpression(
     t.memberExpression(
@@ -240,7 +240,10 @@ function throwErr(path: NodePath): never {
   );
 }
 
-function addJestImport(path: NodePath<Program>): Identifier {
+function addJestImport(
+  t: typeof import("@babel/types"),
+  path: NodePath<Program>
+): Identifier {
   let existingImport: Identifier | undefined;
 
   path.traverse({
@@ -254,9 +257,9 @@ function addJestImport(path: NodePath<Program>): Identifier {
       }
     },
   });
-if (existingImport === undefined) {
+  if (existingImport === undefined) {
     return addNamed(path, JEST, "@jest/globals");
   } else {
-    return existingImport;
+    return t.clone(existingImport);
   }
 }
