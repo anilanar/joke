@@ -163,22 +163,23 @@ it("throws a sensible error on invalid usage", async () => {
     `);
 
   await expect(promise).rejects.toMatchInlineSnapshot(`
-          [Error: /example.ts: 
-          \`mock\` must be used like:
+    [Error: /example.ts: 
+    \`mock\` must be used like:
 
-          mock(import('moduleName'))
+    mock(import('moduleName'))
 
-          Instead saw:
+    Instead saw:
 
-          mock('foo')
+    mock('foo')
 
-          ]
-        `);
+    ]
+  `);
 });
 
 describe("mockSome", () => {
   it("extends requireActual'ed original impl with provided mock", async () => {
     const result = await assert(`
+    import { jest } from '@jest/globals';
     import { mockSome } from '@userlike/joke';
     const { bar } = mockSome(import('foo'), () => ({
       bar: jest.fn()
@@ -187,9 +188,9 @@ describe("mockSome", () => {
 
     expect(result).toMatchInlineSnapshot(`
       "import * as _foo from "foo";
-      import { jest as _jest } from "@jest/globals";
+      import { jest } from '@jest/globals';
       import { mockSome } from '@userlike/joke';
-      _jest.mock("foo", () => global.Object.assign({}, _jest.requireActual("foo"), (() => ({
+      jest.mock("foo", () => global.Object.assign({}, jest.requireActual("foo"), (() => ({
         bar: jest.fn()
       }))()));
       const {
@@ -202,6 +203,7 @@ describe("mockSome", () => {
 describe("mockAll", () => {
   it("uses plain jest.mock with no extends", async () => {
     const result = await assert(`
+    import { jest } from '@jest/globals';
     import { mockAll } from '@userlike/joke';
     const { bar } = mockAll(import('foo'), () => ({
       bar: jest.fn()
@@ -210,9 +212,9 @@ describe("mockAll", () => {
 
     expect(result).toMatchInlineSnapshot(`
       "import * as _foo from "foo";
-      import { jest as _jest } from "@jest/globals";
+      import { jest } from '@jest/globals';
       import { mockAll } from '@userlike/joke';
-      _jest.mock("foo", () => ({
+      jest.mock("foo", () => ({
         bar: jest.fn()
       }));
       const {
