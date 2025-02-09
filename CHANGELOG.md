@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0-internal.0](https://github.com/userlike/joke/compare/v2.1.3...v3.0.0-internal.0) (2025-02-09)
+
+
+### Bug Fixes
+
+* upgrade deps ([5d4a7d7](https://github.com/userlike/joke/commit/5d4a7d7e4d52687c8048e7ce9e8d987bb09add38))
+
+
+### Features
+
+* add support for @jest/globals, but only for internal userlike use ([3a9341e](https://github.com/userlike/joke/commit/3a9341e1ae683e67f95d02152415206b1a23e9dd))
+
+
+### BREAKING CHANGES
+
+* Stops using global jest and instead uses imports
+
+
+
+
+
 ## [2.1.3](https://github.com/userlike/joke/compare/v2.1.2...v2.1.3) (2023-03-28)
 
 
