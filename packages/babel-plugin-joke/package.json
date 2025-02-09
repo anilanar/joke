@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.21.2",
     "@babel/traverse": "^7.21.3"
   }
 }
