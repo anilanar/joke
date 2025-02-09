@@ -1,7 +1,7 @@
 import { pipe } from "fp-ts/function";
 import * as A from "fp-ts/Array";
 import * as O from "fp-ts/Option";
-import { addNamespace, addNamed } from "@babel/helper-module-imports";
+import { addNamespace } from "@babel/helper-module-imports";
 import type { PluginObj } from "@babel/core";
 import type { Binding, NodePath } from "@babel/traverse";
 import {
