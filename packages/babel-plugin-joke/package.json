@@ -1,6 +1,6 @@
 {
   "name": "@userlike/babel-plugin-joke",
-  "version": "3.0.0-internal.0",
+  "version": "3.0.0-internal.1",
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "types": "dist/es/index.d.ts",
