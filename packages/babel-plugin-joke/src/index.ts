@@ -1,7 +1,7 @@
 import { pipe } from "fp-ts/function";
 import * as A from "fp-ts/Array";
 import * as O from "fp-ts/Option";
-import { addNamespace } from "@babel/helper-module-imports";
+import { addNamespace, addNamed } from "@babel/helper-module-imports";
 import type { PluginObj } from "@babel/core";
 import type { Binding, NodePath } from "@babel/traverse";
 import {
@@ -12,6 +12,8 @@ import {
   SpreadElement,
   ArrowFunctionExpression,
   FunctionExpression,
+  Identifier,
+  ImportSpecifier,
 } from "@babel/types";
 
 const JOKE_MODULE = "@userlike/joke";
@@ -123,7 +125,7 @@ function convertMockCalls(
     invariantPath(t.isCallExpression(call), callPath);
 
     const asyncImport = call.arguments[0];
-    const moduleImplementation: typeof call.arguments[1] | undefined =
+    const moduleImplementation: (typeof call.arguments)[1] | undefined =
       call.arguments[1];
 
     invariantPath(t.isCallExpression(asyncImport), callPath);
@@ -134,6 +136,7 @@ function convertMockCalls(
     invariantPath(t.isStringLiteral(moduleNameLiteral), callPath);
     const moduleName = moduleNameLiteral.value;
 
+    const jestImport = addJestImport(path);
     const namespaceName = addNamespace(path, moduleName);
     callPath.replaceWith(t.identifier(namespaceName.name));
 
@@ -144,12 +147,13 @@ function convertMockCalls(
         lastImportPath.insertAfter(
           t.expressionStatement(
             t.callExpression(
-              t.memberExpression(t.identifier(JEST), t.identifier(JEST_MOCK)),
+              t.memberExpression(jestImport, t.identifier(JEST_MOCK)),
               moduleImplementation === undefined
                 ? [t.stringLiteral(moduleName)]
                 : [
                     t.stringLiteral(moduleName),
                     mockImplementation(
+                      path,
                       t,
                       moduleName,
                       moduleImplementation,
@@ -172,6 +176,7 @@ function convertMockCalls(
  * Converts `() => x` to `() => Object.assign({}, jest.genMockFromModul('modulename'), (() => x)())`.
  */
 function mockImplementation(
+  path: NodePath<Program>,
   t: T,
   moduleName: string,
   impl: Expression | SpreadElement | JSXNamespacedName | ArgumentPlaceholder,
@@ -186,10 +191,11 @@ function mockImplementation(
     return impl;
   }
 
+  const jestImport = addJestImport(path);
   const iife = t.callExpression(impl, []);
   const requireMock = t.callExpression(
     t.memberExpression(
-      t.identifier(JEST),
+      jestImport,
       t.identifier(
         mockType === MockType.ExtendMocked
           ? JEST_GEN_MOCK_FROM_MODULE
@@ -232,4 +238,25 @@ function throwErr(path: NodePath): never {
       path.getSource() +
       "\n\n"
   );
+}
+
+function addJestImport(path: NodePath<Program>): Identifier {
+  let existingImport: Identifier | undefined;
+
+  path.traverse({
+    ImportDeclaration(importPath) {
+      if (importPath.node.source.value === "@jest/globals") {
+        existingImport = importPath.node.specifiers.find(
+          (specifier): specifier is ImportSpecifier =>
+            specifier.type === "ImportSpecifier" &&
+            specifier.imported.name === JEST
+        )?.local;
+      }
+    },
+  });
+if (existingImport === undefined) {
+    return addNamed(path, JEST, "@jest/globals");
+  } else {
+    return existingImport;
+  }
 }

@@ -19,9 +19,10 @@ it("common case", async () => {
   expect(result).toMatchInlineSnapshot(`
     "import * as _bar from "bar";
     import * as _foo from "foo";
+    import { jest as _jest } from "@jest/globals";
     import { mock } from '@userlike/joke';
-    jest.mock("bar");
-    jest.mock("foo");
+    _jest.mock("bar");
+    _jest.mock("foo");
     const {
       foo,
       foo2
@@ -46,8 +47,9 @@ it("handles mock import as a namespace", async () => {
 
   expect(result).toMatchInlineSnapshot(`
     "import * as _foobar from "foobar";
+    import { jest as _jest } from "@jest/globals";
     import * as M from '@userlike/joke';
-    jest.mock("foobar");
+    _jest.mock("foobar");
     const {
       foo
     } = _foobar;"
@@ -63,8 +65,9 @@ it("handles assigning return value to a namespace variable", async () => {
 
   expect(result).toMatchInlineSnapshot(`
     "import * as _foobar from "foobar";
+    import { jest as _jest } from "@jest/globals";
     import { mock } from '@userlike/joke';
-    jest.mock("foobar");
+    _jest.mock("foobar");
     const F = _foobar;
     F.foo.mockReturnValue(5);"
   `);
@@ -79,8 +82,9 @@ it("handles member expressions", async () => {
 
   expect(result).toMatchInlineSnapshot(`
     "import * as _foobar from "foobar";
+    import { jest as _jest } from "@jest/globals";
     import { mock } from '@userlike/joke';
-    jest.mock("foobar");
+    _jest.mock("foobar");
     const bar = _foobar.foo.bar;
     bar.mockReturnValue(5);"
   `);
@@ -94,8 +98,9 @@ it("handles just a call expression", async () => {
 
   expect(result).toMatchInlineSnapshot(`
     "import * as _foobar from "foobar";
+    import { jest as _jest } from "@jest/globals";
     import { mock } from '@userlike/joke';
-    jest.mock("foobar");
+    _jest.mock("foobar");
     _foobar;"
   `);
 });
@@ -120,8 +125,9 @@ it("works with rest params", async () => {
 
   expect(result).toMatchInlineSnapshot(`
     "import * as _foobar from "foobar";
+    import { jest as _jest } from "@jest/globals";
     import { mock } from '@userlike/joke';
-    jest.mock("foobar");
+    _jest.mock("foobar");
     const {
       foo,
       ...bar
@@ -139,8 +145,9 @@ it("allows custom module implementation to be passed", async () => {
 
   expect(result).toMatchInlineSnapshot(`
     "import * as _foobar from "foobar";
+    import { jest as _jest } from "@jest/globals";
     import { mock } from '@userlike/joke';
-    jest.mock("foobar", () => global.Object.assign({}, jest.genMockFromModule("foobar"), (() => ({
+    _jest.mock("foobar", () => global.Object.assign({}, _jest.genMockFromModule("foobar"), (() => ({
       foo: 5
     }))()));
     const {
@@ -180,8 +187,9 @@ describe("mockSome", () => {
 
     expect(result).toMatchInlineSnapshot(`
       "import * as _foo from "foo";
+      import { jest as _jest } from "@jest/globals";
       import { mockSome } from '@userlike/joke';
-      jest.mock("foo", () => global.Object.assign({}, jest.requireActual("foo"), (() => ({
+      _jest.mock("foo", () => global.Object.assign({}, _jest.requireActual("foo"), (() => ({
         bar: jest.fn()
       }))()));
       const {
@@ -202,8 +210,9 @@ describe("mockAll", () => {
 
     expect(result).toMatchInlineSnapshot(`
       "import * as _foo from "foo";
+      import { jest as _jest } from "@jest/globals";
       import { mockAll } from '@userlike/joke';
-      jest.mock("foo", () => ({
+      _jest.mock("foo", () => ({
         bar: jest.fn()
       }));
       const {

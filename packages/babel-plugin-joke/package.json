@@ -11,7 +11,7 @@
     "url": "github:userlike/joke",
     "directory": "packages/babel-plugin-joke"
   },
-  "author": "Anil Anar mail@anilanar.me",
+  "author": "Anil Anar",
   "license": "MIT",
   "files": [
     "dist/es",
